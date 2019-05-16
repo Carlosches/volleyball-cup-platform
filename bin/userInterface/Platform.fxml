@@ -26,13 +26,13 @@
                   </Label>
                   <Button layoutX="195.0" layoutY="169.0" mnemonicParsing="false" onAction="#exploreFile" text="Explore" />
                   <Button layoutX="279.0" layoutY="169.0" mnemonicParsing="false" onAction="#loadFile" text="Load" />
-                  <TextField layoutX="26.0" layoutY="169.0" onAction="#fieldFile" />
+                  <TextField fx:id="fieldFile" editable="false" layoutX="26.0" layoutY="169.0" />
                   <Label layoutX="26.0" layoutY="227.0" text="Search for spectators">
                      <font>
                         <Font name="System Bold Italic" size="19.0" />
                      </font>
                   </Label>
-                  <TextField layoutX="64.0" layoutY="279.0" onAction="#idSpectator" />
+                  <TextField fx:id="idSpectator" layoutX="64.0" layoutY="279.0" />
                   <Label layoutX="33.0" layoutY="283.0" text="id" />
                   <Button layoutX="241.0" layoutY="279.0" mnemonicParsing="false" onAction="#searchSpectator" text="Search" />
                   <Label layoutX="315.0" layoutY="283.0" text="Time :" />
@@ -43,7 +43,7 @@
                      </font>
                   </Label>
                   <Label layoutX="33.0" layoutY="386.0" text="id" />
-                  <TextField layoutX="64.0" layoutY="382.0" onAction="#idParticipant" />
+                  <TextField fx:id="idParticipant" layoutX="64.0" layoutY="382.0" />
                   <Button layoutX="241.0" layoutY="382.0" mnemonicParsing="false" onAction="#searchParticipant" text="Search" />
                   <Label layoutX="315.0" layoutY="386.0" text="Time :" />
                   <Label fx:id="timeSearchParticipant" layoutX="354.0" layoutY="386.0" text="0 s" />
