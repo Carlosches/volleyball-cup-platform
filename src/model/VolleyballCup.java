@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.StringTokenizer;
 
 public class VolleyballCup {
@@ -31,19 +33,53 @@ public class VolleyballCup {
 		br.readLine();  // eat first line
 		
 		String line = "";
+		List<Person> selectedPersons = new ArrayList<Person>();
 		
 		while((line = br.readLine()) != null) {
 			
 			StringTokenizer st = new StringTokenizer(line, ",");
 			
 			addPersonToTree(st.nextToken(), st.nextToken(), st.nextToken(), st.nextToken(), st.nextToken(), st.nextToken(), st.nextToken(), st.nextToken());
+			
+			st = new StringTokenizer(line, ",");
+			
+			Person person = new Person(st.nextToken(), st.nextToken(), st.nextToken(), st.nextToken(), st.nextToken(), st.nextToken(), st.nextToken(), st.nextToken());
+			selectedPersons.add(person);
 		}
-		
 		br.close();
+		
+		int size = selectedPersons.size();
+		boolean[] visited = new boolean[size];
+		for (int i = 0; i < size/2; i++) {
+			int random = (int) (0 + Math.random()*size);
+			if(!visited[random]) {
+				addParticipantToList(selectedPersons.get(random));
+				visited[random] = true;
+			}else {
+				i--;
+			}
+			
+			if(i == 200) {
+				System.out.println(selectedPersons.get(random).getId());
+			}
+		}
 	}
 	
 	
 	public void addParticipantToList(Person participant) {
+		
+		if(firstParticipant == null) {
+			firstParticipant = participant;
+		}else {
+			Person current = firstParticipant;
+			
+			while(current.getNext() != null) {
+				current = current.getNext();
+			}
+			
+			current.setNext(participant);
+			participant.setPrev(current);
+		}
 		
 	}
 	
@@ -105,9 +141,37 @@ public class VolleyballCup {
 		
 	}
 	
+	public Person searchParticipantById(String id) {
+		
+		Person current = firstParticipant;
+		boolean found = false;
+		
+		while(!found && current != null) {
+			
+			if(current.getId().equals(id)) {
+				found = true;
+			}else {
+				current = current.getNext();
+			}
+		}
+		
+		return current;
+		
+	}
 	
 	
-	
+	public List<Person> getParticipants(){
+		List<Person> participants = new ArrayList<Person>();
+
+		Person current = firstParticipant;
+		
+		while(current != null) {
+			participants.add(current);
+			current = current.getNext();
+		}
+		
+		return participants;
+	}
 	
 	
 	

@@ -8,7 +8,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="565.0" prefWidth="796.0" tabClosingPolicy="UNAVAILABLE" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="userInterface.VolleyballCupController">
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="565.0" prefWidth="796.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="userInterface.VolleyballCupController">
   <tabs>
     <Tab text="Tab 1">
       <content>
@@ -67,10 +67,10 @@
                         <Font name="System Bold Italic" size="23.0" />
                      </font>
                   </Label>
-                  <ScrollPane fx:id="fieldToPaint" prefHeight="330.0" prefWidth="796.0">
-                    <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" />
-                    </content>
+                  <ScrollPane fx:id="fieldToPaint" hbarPolicy="ALWAYS" prefHeight="330.0" prefWidth="796.0">
+                     <content>
+                        <Pane fx:id="paintPane" prefHeight="328.0" prefWidth="50100.0" />
+                     </content>
                   </ScrollPane>
                   <Pane prefHeight="118.0" prefWidth="796.0">
                      <children>

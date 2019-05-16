@@ -50,8 +50,8 @@ public class Person implements Comparable<Person>{
 	 */
 	@Override
 	public String toString() {
-		return "id= " + id + "\n" +  "first_name=" + first_name + ", last_name=" + last_name + ", email=" + email
-				+ ", gender=" + gender + ", country=" + country + ", photo=" + photo + ", birthday=" + birthday + "]";
+		return "id= " + id + "\n" +  "first_name=" + first_name + "\n" + "last_name=" + last_name + "\n" + "email=" + email
+				+ "\n"+ "gender=" + gender + "\n" + "country=" + country + "\n" + "birthday=" + birthday;
 	}
 
 	/**

@@ -10,6 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.FileChooser;
@@ -36,14 +37,15 @@ public class VolleyballCupController {
     @FXML
     private Label informationLabel;
 
-    @FXML
-    private ScrollPane fieldToPaint;
 
     @FXML
     private Label timeSearchSpectator;
 
     @FXML
     private Rectangle avatarImage;
+    
+    @FXML
+    private Pane paintPane;
 
     
     @FXML
@@ -80,6 +82,7 @@ public class VolleyballCupController {
    
     @FXML
     void searchSpectator(ActionEvent event) {
+    	long time = System.currentTimeMillis();
     	
     	if(idSpectator.getText() != null) {
     		Person personFound = cup.searchPersonById(idSpectator.getText());
@@ -90,17 +93,57 @@ public class VolleyballCupController {
     			
     		}
     	}
+    	
+    	time = (System.currentTimeMillis()-time)/1000;
+    	
+    	timeSearchSpectator.setText(""+time + " s");
     }
 
 
     @FXML
     void searchParticipant(ActionEvent event) {
-
+    	long time = System.currentTimeMillis();
+    	
+    	if(idParticipant.getText() != null) {
+    		Person personFound = cup.searchParticipantById(idParticipant.getText());
+    		
+    		if(personFound!=null) {
+    			informationLabel.setText(personFound.toString());
+    			avatarImage.setFill(new ImagePattern(new Image(personFound.getPhoto())));
+    			
+    		}
+    	}
+    	time = (System.currentTimeMillis()-time)/1000;
+    	
+    	timeSearchParticipant.setText(""+time + " s");
+    	
     }
 
     @FXML
     void paintParticipantStructure(ActionEvent event) {
-
+    	
+    	List<Person> participants = cup.getParticipants();
+	
+    	int x = 14;
+    	for (int i = 0; i < participants.size(); i++) {
+    		
+    		Rectangle avatar = new Rectangle(50, 50);
+    		avatar.setX(x); 
+    		avatar.setY(139);
+    		avatar.setFill(new ImagePattern(new Image("userInterfaceImages/lines.png")));
+ 
+    		if(i!= participants.size()-1) {
+	    		Rectangle lines = new Rectangle(50, 50);
+	    		lines.setX(x+50);
+	    		lines.setY(139);
+	    		lines.setFill(new ImagePattern(new Image("userInterfaceImages/lines.png")));
+	    		paintPane.getChildren().add(lines);
+    		}
+    		x+=100;
+    		
+    		paintPane.getChildren().add(avatar);
+		}
+    	
     }
 
     @FXML
