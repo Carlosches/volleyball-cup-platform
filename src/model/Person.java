@@ -50,11 +50,80 @@ public class Person implements Comparable<Person>{
 	 */
 	@Override
 	public String toString() {
-		return "Person [id=" + id + ", first_name=" + first_name + ", last_name=" + last_name + ", email=" + email
+		return "id= " + id + "\n" +  "first_name=" + first_name + ", last_name=" + last_name + ", email=" + email
 				+ ", gender=" + gender + ", country=" + country + ", photo=" + photo + ", birthday=" + birthday + "]";
 	}
+
+	/**
+	 * @return the right
+	 */
+	public Person getRight() {
+		return right;
+	}
+
+	/**
+	 * @param right the right to set
+	 */
+	public void setRight(Person right) {
+		this.right = right;
+	}
+
+	/**
+	 * @return the left
+	 */
+	public Person getLeft() {
+		return left;
+	}
+
+	/**
+	 * @param left the left to set
+	 */
+	public void setLeft(Person left) {
+		this.left = left;
+	}
+
+	/**
+	 * @return the prev
+	 */
+	public Person getPrev() {
+		return prev;
+	}
+
+	/**
+	 * @param prev the prev to set
+	 */
+	public void setPrev(Person prev) {
+		this.prev = prev;
+	}
+
+	/**
+	 * @return the next
+	 */
+	public Person getNext() {
+		return next;
+	}
+
+	/**
+	 * @param next the next to set
+	 */
+	public void setNext(Person next) {
+		this.next = next;
+	}
+
+	/**
+	 * @return the id
+	 */
+	public String getId() {
+		return id;
+	}
 	
-	
+	/**
+	 * 
+	 * @return the photo
+	 */
+	public String getPhoto() {
+		return photo;
+	}
 	
 	
 }
