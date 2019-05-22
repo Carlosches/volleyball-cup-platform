@@ -45,9 +45,7 @@ public class Person implements Comparable<Person>{
 		return id.compareTo(otherPerson.id);
 	}
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
+	
 	@Override
 	public String toString() {
 		return "id= " + id + "\n" +  "first_name=" + first_name + "\n" + "last_name=" + last_name + "\n" + "email=" + email
@@ -124,6 +122,28 @@ public class Person implements Comparable<Person>{
 	public String getPhoto() {
 		return photo;
 	}
+
+	/**
+	 * @return the first_name
+	 */
+	public String getFirst_name() {
+		return first_name;
+	}
+
+	/**
+	 * @return the last_name
+	 */
+	public String getLast_name() {
+		return last_name;
+	}
+
+	/**
+	 * @return the country
+	 */
+	public String getCountry() {
+		return country;
+	}
+	
 	
 	
 }

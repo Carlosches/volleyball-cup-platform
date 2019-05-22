@@ -17,10 +17,13 @@ public class VolleyballCup {
 	private Person firstParticipant;
 	private Person rootSpectator;
 	
+	List<String> participantCountries;
+	
 	public VolleyballCup(String name, String date, String city) {
 		this.name = name;
 		this.date = date;
 		this.city = city;
+		participantCountries = new ArrayList<String>();
 	}
 
 	
@@ -67,21 +70,23 @@ public class VolleyballCup {
 	
 	
 	public void addParticipantToList(Person participant) {
-		
-		if(firstParticipant == null) {
-			firstParticipant = participant;
-		}else {
-			Person current = firstParticipant;
-			
-			while(current.getNext() != null) {
-				current = current.getNext();
-			}
-			
-			current.setNext(participant);
-			participant.setPrev(current);
-		}
-		
-	}
+        if(!participantCountries.contains(participant.getCountry()))
+            participantCountries.add(participant.getCountry());
+        
+        if(firstParticipant == null) {
+            firstParticipant = participant;
+        }else {
+            Person current = firstParticipant;
+            
+            while(current.getNext() != null) {
+                current = current.getNext();
+            }
+            
+            current.setNext(participant);
+            participant.setPrev(current);
+        }
+        
+    }
 	
 	public void addPersonToTree(String id, String firstName, String lastName, String email, String gender, String country, String photo, String birthday) {
 		Person newPerson = new Person(id, firstName, lastName, email, gender, country, photo, birthday);
@@ -173,16 +178,21 @@ public class VolleyballCup {
 		return participants;
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-			
-	
-	
+	public List<Person> preOrder(String country){
+        List<Person> treeNodes= new ArrayList<Person>();
+       preorder(rootSpectator, treeNodes, country);
+       return treeNodes;
+    }
+    
+   private void preorder(Person current, List<Person> nodes, String country){
+       if(current != null){
+           if(current.getCountry().equals(country)) {
+               nodes.add(current);
+           }
+               preorder(current.getLeft(), nodes, country);
+               preorder(current.getRight(), nodes, country);
+       }
+    }
 	
 	/**
 	 * @return the firstParticipant
@@ -210,6 +220,16 @@ public class VolleyballCup {
 	 */
 	public void setRootSpectator(Person rootSpectator) {
 		this.rootSpectator = rootSpectator;
+	}
+
+
+
+
+	/**
+	 * @return the participantCountries
+	 */
+	public List<String> getParticipantCountries() {
+		return participantCountries;
 	}
 	
 	
